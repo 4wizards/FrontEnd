@@ -1,0 +1,27 @@
+<%- include("header") -%>
+
+  <div class="box" id="heading">
+  </div>
+
+  <div class="hbox">
+    <p>deviceName</p>
+    <p>temperature</p>
+    <p>humidity</p>
+    <p>measurementTime</p>
+    <p>locationName</p>
+  </div>
+    <% newListItems.forEach(function(item){%>
+      <div class="box">
+        <p><%=item.deviceName%></p>
+        <p><%=item.temperature%></p>
+        <p><%=item.humidity%></p>
+        <p><%= item.measurementTime %></p>
+        
+        <p><%=item.locationName%></p>
+      </div>
+
+      <%})%>
+  </div>
+
+  
+<%- include("footer") -%>
