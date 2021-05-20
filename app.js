@@ -22,7 +22,7 @@ app.get("/", function(req, res) {
     response.on('data', function(data){
     const wdata = JSON.parse(data);    
     for(item of wdata){
-      item["time"]=(new Date((item.measurementTime)*1000).toLocaleTimeString(sv-SE))  
+      item["time"]=(new Date((item.measurementTime)*1000).toLocaleTimeString("sv-SE"))  
     }      
     res.render("list", {newListItems: wdata}); 
     });
