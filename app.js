@@ -23,13 +23,9 @@ app.get("/", function(req, res) {
     response.on('data', function(data){
 4 
     const wdata = JSON.parse(data);
-    console.log(wdata);
+    //console.log(wdata);
     const temp = wdata;
-    
-
-  
-
-      res.render("list", {newListItems: wdata});
+    res.render("list", {newListItems: wdata});
       
     });
   });

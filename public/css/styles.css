@@ -1,13 +1,21 @@
 html {
   background-color: #E4E9FD;
-  background-image: -webkit-linear-gradient(65deg, #6dac36 50%, #E4E9FD 50%);
-  min-height: 1000px;
+  background-image: -webkit-linear-gradient(65deg, #8fd057 50%, #E4E9FD 50%);
+  height: 100%;
   font-family: 'helvetica neue';
 }
 
 h1 {
-  color: #fff;
-  padding: 10px;
+  color: rgb(237, 186, 57);
+  padding: 0px;
+  font-size: 1.5rem;
+  
+}
+
+h2{
+  color: rgb(194, 208, 45);
+  padding: 0px;
+  font-size: 1.5rem;
 }
 
 .box {
@@ -20,14 +28,18 @@ h1 {
 .hbox {
   max-width: 900px;
   margin: 10px auto;
-  background: white;
+  background: rgb(203, 227, 195);
   border-radius: 5px;
   box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
 }
 
 #heading {
-  background-color: #6dac36;
+  background-color: #edf7e5;
   text-align: center;
+  height: 200px;
+  width: 200px;
+  border: 3px solid #e0e850;
+  border-radius: 25px;
 }
 
 .item {

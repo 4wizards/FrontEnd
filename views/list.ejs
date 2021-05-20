@@ -1,27 +1,62 @@
 <%- include("header") -%>
 
   <div class="box" id="heading">
+      <h1>Current Temperature</h1>
+      <h2 id="devicename"></h2>
+      <h2 id="websocket"></h2>
+    </div>
   </div>
 
   <div class="hbox">
-    <p>deviceName</p>
-    <p>temperature</p>
-    <p>humidity</p>
-    <p>measurementTime</p>
-    <p>locationName</p>
+    <p>Device Name</p>
+    <p>Temperature</p>
+    <p>Humidity</p>
+    <p>Time</p>
+    <p>Location</p>
   </div>
     <% newListItems.forEach(function(item){%>
       <div class="box">
         <p><%=item.deviceName%></p>
         <p><%=item.temperature%></p>
         <p><%=item.humidity%></p>
-        <p><%= item.measurementTime %></p>
-        
+        <p><%= item.measurementTime %></p> 
         <p><%=item.locationName%></p>
       </div>
-
       <%})%>
   </div>
+
+
+  <script>
+    var ws = new WebSocket("ws://coldfeetwebsocket.herokuapp.com/message");
+    var websocketHeader = document.getElementById("websocket");
+    var devicename = document.getElementById("devicename");
+    ws.onopen = function(){
+      console.log("connected to websocket");
+    }
+
+    ws.onmessage = function(event){
+    console.log(event.data)
+    if(event !=""){
+      var json = JSON.parse(event.data);
+    websocketHeader.innerHTML = json.measurement.temperature;
+    devicename.innerHTML = json.device.deviceName;
+    }
+    ws.onclose = function(){
+      ws = new WebSocket("ws://coldfeetwebsocket.herokuapp.com/message");
+    }
+    }
+/*
+    ws.onmessage = function(event) {
+    var log = document.getElementById("log");
+    console.log(event.data);
+    log.innerHTML = json;
+}*/
+
+
+
+
+
+  </script>
 
   
 <%- include("footer") -%>
