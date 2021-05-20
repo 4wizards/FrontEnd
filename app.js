@@ -19,14 +19,12 @@ console.log(process.env.PORT)
 app.get("/", function(req, res) {
   http.get("http://coldfeet.herokuapp.com/api/getvalues", function(response){
     console.log(response.statusCode);
-
     response.on('data', function(data){
-4 
-    const wdata = JSON.parse(data);
-    //console.log(wdata);
-    const temp = wdata;
-    res.render("list", {newListItems: wdata});
-      
+    const wdata = JSON.parse(data);    
+    for(item of wdata){
+      item["time"]=(new Date((item.measurementTime)*1000).toLocaleTimeString())  
+    }      
+    res.render("list", {newListItems: wdata}); 
     });
   });
 });

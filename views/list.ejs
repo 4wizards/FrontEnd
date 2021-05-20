@@ -19,42 +19,35 @@
         <p><%=item.deviceName%></p>
         <p><%=item.temperature%></p>
         <p><%=item.humidity%></p>
-        <p><%= item.measurementTime %></p> 
-        <p><%=item.locationName%></p>
+        <p><%=item.time%></p>
+        <p><%=item.locationName%></p>        
       </div>
       <%})%>
+      
   </div>
 
 
   <script>
-    var ws = new WebSocket("ws://coldfeetwebsocket.herokuapp.com/message");
-    var websocketHeader = document.getElementById("websocket");
-    var devicename = document.getElementById("devicename");
+
+   
+    var ws = new WebSocket("ws://coldfeetwebsocket.herokuapp.com/message")
+    var websocketHeader = document.getElementById("websocket")
+    var devicename = document.getElementById("devicename")
     ws.onopen = function(){
-      console.log("connected to websocket");
+      console.log("connected to websocket")
     }
 
     ws.onmessage = function(event){
     console.log(event.data)
     if(event !=""){
-      var json = JSON.parse(event.data);
-    websocketHeader.innerHTML = json.measurement.temperature;
-    devicename.innerHTML = json.device.deviceName;
+      var json = JSON.parse(event.data)
+    websocketHeader.innerHTML = json.measurement.temperature
+    devicename.innerHTML = json.device.deviceName
     }
     ws.onclose = function(){
-      ws = new WebSocket("ws://coldfeetwebsocket.herokuapp.com/message");
+      ws = new WebSocket("ws://coldfeetwebsocket.herokuapp.com/message")
     }
     }
-/*
-    ws.onmessage = function(event) {
-    var log = document.getElementById("log");
-    console.log(event.data);
-    log.innerHTML = json;
-}*/
-
-
-
-
 
   </script>
 
