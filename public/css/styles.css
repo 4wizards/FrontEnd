@@ -18,13 +18,17 @@ h2{
   font-size: 1.5rem;
 }
 
-.box {
-  max-width: 900px;
-  margin: 10px auto;
-  background: white;
-  border-radius: 5px;
-  box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+.content{
+  display: flex;
+  justify-content: center;
 }
+
+.tablebox{
+  margin: 0 auto, 100 auto;
+  display: inline-block;
+
+}
+
 .hbox {
   max-width: 900px;
   margin: 10px auto;
@@ -33,6 +37,16 @@ h2{
   box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
 }
 
+.box {
+  
+  max-width: 900px;
+  margin: 10px auto;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+}
+
+
 #heading {
   background-color: #edf7e5;
   text-align: center;
@@ -40,6 +54,9 @@ h2{
   width: 200px;
   border: 3px solid #e0e850;
   border-radius: 25px;
+  float: left;
+  margin-left: 10px;
+
 }
 
 .item {

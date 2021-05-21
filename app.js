@@ -17,7 +17,7 @@ console.log(process.env.PORT)
 
 
 app.get("/", function(req, res) {
-  http.get("http://coldfeet.herokuapp.com/api/getvalues", function(response){
+  http.get("http://coldfeet.herokuapp.com/api/getvalues/10", function(response){
     console.log(response.statusCode);
     response.on('data', function(data){
     const wdata = JSON.parse(data);    

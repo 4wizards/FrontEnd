@@ -1,12 +1,33 @@
 <%- include("header") -%>
-
+<div class="content">
+<div class="top">
   <div class="box" id="heading">
-      <h1>Current Temperature</h1>
-      <h2 id="devicename"></h2>
-      <h2 id="websocket"></h2>
-    </div>
+    <h1>Current Temperature</h1>
+    <h2 id="Ahmedname"></h2>
+    <h2 id="Ahmedwebsocket"></h2>
   </div>
 
+  <div class="box" id="heading">
+    <h1>Current Temperature</h1>
+    <h2 id="danielname"></h2>
+    <h2 id="danielsocket"></h2>
+  </div>
+
+  <div class="box" id="heading">
+    <h1>Current Temperature</h1>
+    <h2 id="Jokokodevicename"></h2>
+    <h2 id="Jokokowebsocket"></h2>
+  </div>
+
+  <div class="box" id="heading">
+    <h1>Current Temperature</h1>
+    <h2 id="devicename"></h2>
+    <h2 id="websocket"></h2>
+  </div>
+</div>
+</div>
+<div class="content">
+  <div class="tablebox">
   <div class="hbox">
     <p>Device Name</p>
     <p>Temperature</p>
@@ -23,26 +44,37 @@
         <p><%=item.locationName%></p>        
       </div>
       <%})%>
-      
   </div>
-
+</div>
+</div>
 
   <script>
-
-   
     var ws = new WebSocket("ws://coldfeetwebsocket.herokuapp.com/message")
     var websocketHeader = document.getElementById("websocket")
     var devicename = document.getElementById("devicename")
     ws.onopen = function(){
-      console.log("connected to websocket")
+    console.log("connected to websocket")
     }
 
     ws.onmessage = function(event){
     console.log(event.data)
     if(event !=""){
       var json = JSON.parse(event.data)
-    websocketHeader.innerHTML = json.measurement.temperature
-    devicename.innerHTML = json.device.deviceName
+      if(json.device.deviceName ==="Jokoko"){
+        Jokokodevicename.innerHTML = json.device.deviceName 
+        Jokokowebsocket.innerHTML = json.measurement.temperature
+      }
+      if(json.device.deviceName ==="Daniel"){
+        danielname.innerHTML = json.device.deviceName
+        danielsocket.innerHTML = json.measurement.temperature
+      }if(json.device.deviceName ==="Ahmed"){
+        Ahmedname.innerHTML = json.device.deviceName
+        Ahmedwebsocket.innerHTML = json.measurement.temperature
+      }if(json.device.deviceName ==="VinniesLemonadas"){
+        devicename.innerHTML = json.device.deviceName
+        websocket.innerHTML = json.measurement.temperature
+      }
+      
     }
     ws.onclose = function(){
       ws = new WebSocket("ws://coldfeetwebsocket.herokuapp.com/message")
