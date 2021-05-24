@@ -1,6 +1,6 @@
 //jshint esversion:6
 
-require('dotenv').config();
+//require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const http = require('http');
@@ -15,7 +15,6 @@ app.use(express.static("public"));
 console.log(process.env.PORT)
 
 
-
 app.get("/", function(req, res) {
   http.get("http://coldfeet.herokuapp.com/api/getvalues/10", function(response){
     console.log(response.statusCode);
@@ -23,23 +22,11 @@ app.get("/", function(req, res) {
     const wdata = JSON.parse(data);    
     for(item of wdata){
       item["time"]=(new Date((item.measurementTime)*1000).toLocaleTimeString("sv-SE"))  
-    }      
+    }     
     res.render("list", {newListItems: wdata}); 
     });
   });
 });
-
-app.get("/:customListName", function(req, res){
-  const listName = _.capitalize(req.params.customListName);
-
-});
-
-
-app.post('/delete', function(req, res){
-
-    res.redirect('/' + listName);
-  }
-)
 
 app.listen(process.env.PORT, function() {
   console.log("Server started on port " + process.env.PORT);
